@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Glitch effect */
+@layer utilities {
+  .glitch {
+    position: relative;
+    display: inline-block;
+  }
+
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .glitch::before {
+    animation: glitchTop 1s infinite linear alternate-reverse;
+    top: -2px;
+    color: #0f0;
+  }
+
+  .glitch::after {
+    animation: glitchBottom 1s infinite linear alternate-reverse;
+    bottom: -2px;
+    color: #f00;
+  }
+
+  @keyframes glitchTop {
+    0% { clip: rect(0, 9999px, 0, 0); }
+    20% { clip: rect(0, 9999px, 5px, 0); }
+    40% { clip: rect(0, 9999px, 0, 0); }
+    60% { clip: rect(0, 9999px, 8px, 0); }
+    80% { clip: rect(0, 9999px, 0, 0); }
+    100% { clip: rect(0, 9999px, 4px, 0); }
+  }
+
+  @keyframes glitchBottom {
+    0% { clip: rect(0, 9999px, 0, 0); }
+    20% { clip: rect(8px, 9999px, 9999px, 0); }
+    40% { clip: rect(0, 9999px, 0, 0); }
+    60% { clip: rect(5px, 9999px, 9999px, 0); }
+    80% { clip: rect(0, 9999px, 0, 0); }
+    100% { clip: rect(3px, 9999px, 9999px, 0); }
+  }
+}
